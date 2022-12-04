@@ -15,15 +15,27 @@ This is a bash application that manages transactions on a blockchain allowing id
 The **program** reference below refers to the application executable for example: **Blockchain.Processor.EventStream.Service.exe**
 
 Read Inline (**--read-inline** <json>)
-- Reads either a single json element, or an array of json elements representing transactions from the file in the specified location.
+- Reads either a single json element, or an array of json elements representing transactions as an argument.
 
 ```
-$ program --read-file transactions.json
+$ program --read-inline '{"Type": "Burn", "TokenId": “0x..."}'
+```
+
+```
+$ program --read-file '[{"Type": "Mint", "TokenId": "0x...", "Address": "0x..."}, {"Type": "Burn", "TokenId": "0x..."}]'
 ```
   
 Read File (**--read-file** <file-path>)
-- Reads either a single json element, or an array of json elements representing transactions as an argument.
+- Reads either a single json element, or an array of json elements representing transactions from the file in the specified location.
   
 ```
 $ program --read-file transactions.json
 ```
+
+NFT Ownership (**--nft** <id>)
+- Returns ownership information for the nft with the given id
+
+```
+$ program --nft '0xC000000000000000000000000000000000000000'
+```
+  
