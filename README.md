@@ -71,7 +71,7 @@ NFT Ownership (**--nft** <id>)
 $ ./program --nft '0xC000000000000000000000000000000000000000'
 ```
   
-Wallet Ownership (**--wallet** <address>)
+Wallet Ownership (**--wallet** <address> )
 - Lists all NFTs currently owned by the wallet of the given address
   
 ```
