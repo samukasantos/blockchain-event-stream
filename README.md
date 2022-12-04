@@ -39,3 +39,16 @@ NFT Ownership (**--nft** <id>)
 $ program --nft '0xC000000000000000000000000000000000000000'
 ```
   
+Wallet Ownership (**--wallet** <address>)
+- Lists all NFTs currently owned by the wallet of the given address
+  
+```
+$ program --wallet '0x3000000000000000000000000000000000000000'
+```
+  
+Reset (**--reset**)
+- Deletes all data previously processed by the program
+    
+```
+$ program --reset
+```
