@@ -7,6 +7,8 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 using Blockchain.Processor.Core.Messages;
+using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Blockchain.Processor.EventStream.Service.Adapters
 {
@@ -21,13 +23,19 @@ namespace Blockchain.Processor.EventStream.Service.Adapters
             {
                 if (File.Exists(filePath))
                 {
-                    using var file = File.OpenText(@$"{filePath}");
+                    List<ActionRequest> actions = new();
 
-                    var serializer = new JsonSerializer();
-
-                    if (serializer.Deserialize(file, typeof(List<ActionRequest>)) is List<ActionRequest> actions)
+                    string file = File.ReadAllText(filePath);
+                    
+                    if (IsConvertible<ActionRequest>(file)) 
                     {
+                        actions.Add(JsonConvert.DeserializeObject<ActionRequest>(file));
                         commands = ConvertActionsToCommands(actions);
+                    }
+                    else 
+                    {
+                        var currentActions = JsonConvert.DeserializeObject<List<ActionRequest>>(file);
+                        commands = ConvertActionsToCommands(currentActions);
                     }
                 }
             }
@@ -43,13 +51,21 @@ namespace Blockchain.Processor.EventStream.Service.Adapters
             var commands = new List<ICommand>();
             try
             {
-                var actions = JsonConvert.DeserializeObject<List<ActionRequest>>(json);
+                List<ActionRequest> actions = new();
+
+                if (IsConvertible<List<ActionRequest>>(json))
+                {
+                    actions = JsonConvert.DeserializeObject<List<ActionRequest>>(json);
+                }
+                else 
+                {
+                    actions.Add(JsonConvert.DeserializeObject<ActionRequest>(json));
+                }
 
                 if(actions != null) 
                 {
                     commands = ConvertActionsToCommands(actions);
                 }
-
             }
             catch (Exception)
             {
@@ -78,27 +94,44 @@ namespace Blockchain.Processor.EventStream.Service.Adapters
         {
             var commands = new List<ICommand>();
 
-            foreach (var action in actions)
+            if (actions.Any()) 
             {
-                switch (action.Type)
+                foreach (var action in actions)
                 {
-                    case CommandType.Mint:
-                        commands.Add(new MintCommand(action.TokenId, action.Address));
-                        break;
-                    case CommandType.Burn:
-                        commands.Add(new BurnCommand(action.TokenId));
-                        break;
-                    case CommandType.Transfer:
-                        commands.Add(new TransferCommand(action.TokenId, action.From, action.To));
-                        break;
-                    default:
-                        break;
+                    switch (action.Type)
+                    {
+                        case CommandType.Mint:
+                            commands.Add(new MintCommand(action.TokenId, action.Address));
+                            break;
+                        case CommandType.Burn:
+                            commands.Add(new BurnCommand(action.TokenId));
+                            break;
+                        case CommandType.Transfer:
+                            commands.Add(new TransferCommand(action.TokenId, action.From, action.To));
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
-
             return commands;
         }
-        
+
+        private static bool IsConvertible<T>(string json)
+           where T : class
+        {
+            try
+            {
+                var result = JsonConvert.DeserializeObject<T>(json);
+                return result != null;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
         #endregion
     }
 }
