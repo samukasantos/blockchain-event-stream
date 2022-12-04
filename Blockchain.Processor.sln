@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Processor.EventStream.Service", "src\Services\Blockchain.Processor.EventStream.Service\Blockchain.Processor.EventStream.Service.csproj", "{68F3C0B8-7A16-40A1-8D83-AE22BB850044}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{43B409C1-9DDB-47DE-B0C9-24654E2E8A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Processor.Core", "src\BuildingBlocks\Blockchainx.Processor.Core\Blockchain.Processor.Core.csproj", "{3C1909B9-5B35-4C6E-87AD-FD3BE045398F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{3CCD257C-125E-46FB-8275-4408BC39DA70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{0BD92E66-9649-4225-B6EA-1378CB269059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Processor.Domain", "src\Domain\Blockchain.Processor.Domain\Blockchain.Processor.Domain.csproj", "{CF439B6E-3878-4D0D-813F-1EB8B42526EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{370D5F67-F13D-4156-9E95-E436C691B778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockchain.Processor.EventStream.Service.Tests", "src\Tests\Blockchain.Processor.EventStream.Service.Tests\Blockchain.Processor.EventStream.Service.Tests.csproj", "{2A4BE062-33F2-47F7-9F2F-ED81C0ECB8A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68F3C0B8-7A16-40A1-8D83-AE22BB850044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F3C0B8-7A16-40A1-8D83-AE22BB850044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F3C0B8-7A16-40A1-8D83-AE22BB850044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F3C0B8-7A16-40A1-8D83-AE22BB850044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C1909B9-5B35-4C6E-87AD-FD3BE045398F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C1909B9-5B35-4C6E-87AD-FD3BE045398F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C1909B9-5B35-4C6E-87AD-FD3BE045398F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C1909B9-5B35-4C6E-87AD-FD3BE045398F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF439B6E-3878-4D0D-813F-1EB8B42526EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF439B6E-3878-4D0D-813F-1EB8B42526EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF439B6E-3878-4D0D-813F-1EB8B42526EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF439B6E-3878-4D0D-813F-1EB8B42526EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4BE062-33F2-47F7-9F2F-ED81C0ECB8A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4BE062-33F2-47F7-9F2F-ED81C0ECB8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4BE062-33F2-47F7-9F2F-ED81C0ECB8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4BE062-33F2-47F7-9F2F-ED81C0ECB8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68F3C0B8-7A16-40A1-8D83-AE22BB850044} = {43B409C1-9DDB-47DE-B0C9-24654E2E8A74}
+		{3C1909B9-5B35-4C6E-87AD-FD3BE045398F} = {3CCD257C-125E-46FB-8275-4408BC39DA70}
+		{CF439B6E-3878-4D0D-813F-1EB8B42526EF} = {0BD92E66-9649-4225-B6EA-1378CB269059}
+		{2A4BE062-33F2-47F7-9F2F-ED81C0ECB8A4} = {370D5F67-F13D-4156-9E95-E436C691B778}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8685FC3B-D5B8-4F57-9769-D326979D3B45}
+	EndGlobalSection
+EndGlobal
